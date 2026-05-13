@@ -9,10 +9,11 @@ type CTAButtonProps = {
   variant?: "primary" | "secondary" | "light";
   className?: string;
   type?: "button" | "submit";
+  onClick?: () => void;
 };
 
 const buttonBase =
-  "inline-flex min-h-12 items-center justify-center rounded-[3px] px-6 text-center text-sm font-semibold uppercase tracking-[0.14em] transition focus:outline-none focus:ring-2 focus:ring-champagne/70 focus:ring-offset-2";
+  "inline-flex min-h-12 items-center justify-center rounded-[3px] px-5 text-center text-xs font-semibold uppercase leading-5 tracking-[0.13em] transition focus:outline-none focus:ring-2 focus:ring-champagne/70 focus:ring-offset-2 sm:px-6 sm:text-sm";
 
 const buttonStyles = {
   primary:
@@ -26,7 +27,8 @@ export function CTAButton({
   children,
   variant = "primary",
   className = "",
-  type = "button"
+  type = "button",
+  onClick
 }: CTAButtonProps) {
   const classes = `${buttonBase} ${buttonStyles[variant]} ${className}`;
 
@@ -39,7 +41,7 @@ export function CTAButton({
   }
 
   return (
-    <button type={type} className={classes}>
+    <button type={type} className={classes} onClick={onClick}>
       {children}
     </button>
   );
@@ -48,7 +50,7 @@ export function CTAButton({
 export function SectionEyebrow({ children, light = false }: { children: ReactNode; light?: boolean }) {
   return (
     <p
-      className={`text-xs font-semibold uppercase tracking-[0.22em] ${
+      className={`text-[11px] font-semibold uppercase leading-5 tracking-[0.2em] sm:text-xs ${
         light ? "text-champagne" : "text-brass"
       }`}
     >
@@ -58,7 +60,11 @@ export function SectionEyebrow({ children, light = false }: { children: ReactNod
 }
 
 export function GoldDivider({ className = "" }: { className?: string }) {
-  return <div className={`h-px bg-gradient-to-r from-transparent via-champagne to-transparent ${className}`} />;
+  return (
+    <div
+      className={`h-px bg-gradient-to-r from-transparent via-champagne to-transparent ${className}`}
+    />
+  );
 }
 
 type EditorialHeroProps = {
@@ -79,13 +85,13 @@ export function EditorialHero({
   secondaryCta
 }: EditorialHeroProps) {
   return (
-    <section className="relative min-h-[82vh] overflow-hidden md:min-h-[86vh]">
-      <Image src={image} alt="" fill priority className="object-cover" />
+    <section className="relative min-h-[78vh] overflow-hidden md:min-h-[84vh]">
+      <Image src={image} alt="" fill priority className="object-cover object-center" />
       <div className="image-vignette absolute inset-0" />
-      <div className="relative z-10 mx-auto flex min-h-[82vh] max-w-7xl items-end px-5 pb-12 pt-24 md:min-h-[86vh] md:px-8 md:pb-16">
+      <div className="relative z-10 mx-auto flex min-h-[78vh] max-w-7xl items-end px-5 pb-10 pt-24 md:min-h-[84vh] md:px-8 md:pb-16">
         <div className="max-w-3xl text-ivory">
           <SectionEyebrow light>{eyebrow}</SectionEyebrow>
-          <h1 className="mt-5 max-w-4xl font-serif text-6xl leading-[0.94] md:text-8xl">
+          <h1 className="mt-5 max-w-4xl font-serif text-5xl leading-[0.96] sm:text-6xl md:text-8xl">
             {title}
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-cream md:text-xl md:leading-9">
@@ -133,7 +139,9 @@ export function FeatureSplit({
       >
         <div>
           <SectionEyebrow light={dark}>{eyebrow}</SectionEyebrow>
-          <h2 className="mt-4 font-serif text-5xl leading-tight md:text-6xl">{title}</h2>
+          <h2 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl md:text-6xl">
+            {title}
+          </h2>
           <div className={`mt-6 space-y-5 text-base leading-8 ${dark ? "text-cream/85" : "text-ink-soft"}`}>
             {body}
           </div>
@@ -155,7 +163,7 @@ export function MagazineQuote({ children }: { children: ReactNode }) {
   return (
     <blockquote className="mx-auto max-w-4xl px-5 py-14 text-center md:px-8">
       <GoldDivider className="mx-auto max-w-xs" />
-      <p className="mx-auto mt-8 font-serif text-4xl leading-tight text-espresso md:text-5xl">
+      <p className="mx-auto mt-8 font-serif text-3xl leading-tight text-espresso sm:text-4xl md:text-5xl">
         {children}
       </p>
       <GoldDivider className="mx-auto mt-8 max-w-xs" />
@@ -166,39 +174,68 @@ export function MagazineQuote({ children }: { children: ReactNode }) {
 export function PackageCard({
   weddingPackage,
   image,
-  featured = false
+  featured = false,
+  helpAction
 }: {
   weddingPackage: WeddingPackage;
   image: string;
   featured?: boolean;
+  helpAction?: ReactNode;
 }) {
   return (
-    <article className={`paper-panel overflow-hidden rounded-[6px] ${featured ? "md:row-span-2" : ""}`}>
+    <article
+      className={`paper-panel flex h-full flex-col overflow-hidden rounded-[6px] ${
+        featured ? "md:row-span-2" : ""
+      }`}
+    >
       <div className="relative aspect-[4/3]">
         <Image src={image} alt="" fill className="object-cover" />
       </div>
-      <div className="p-6 md:p-7">
+      <div className="flex flex-1 flex-col p-6 md:p-7">
         <SectionEyebrow>{weddingPackage.eyebrow}</SectionEyebrow>
-        <h3 className="mt-3 font-serif text-4xl leading-tight">{weddingPackage.name}</h3>
+        <h3 className="mt-3 font-serif text-3xl leading-tight sm:text-4xl">
+          {weddingPackage.name}
+        </h3>
         <p className="mt-4 text-sm leading-7 text-ink-soft">{weddingPackage.description}</p>
         <GoldDivider className="my-6" />
-        <p className="text-sm">
+        <p className="text-sm leading-6">
           <span className="font-semibold text-espresso">Best for: </span>
           <span className="text-ink-soft">{weddingPackage.idealFor}</span>
         </p>
-        <ul className="mt-5 grid gap-2 text-sm leading-6 text-ink-soft">
-          {weddingPackage.features.map((feature) => (
-            <li key={feature} className="flex gap-3">
-              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-champagne" />
-              <span>{feature}</span>
-            </li>
-          ))}
-        </ul>
-        <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm font-medium text-espresso">{weddingPackage.startingFrom}</p>
-          <CTAButton href={`/availability?package=${weddingPackage.slug}`} variant="secondary" className="px-4">
+        <p className="mt-4 text-sm font-medium text-espresso">{weddingPackage.startingFrom}</p>
+        <div className="mt-5 grid gap-5 md:grid-cols-2">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brass">
+              Included
+            </p>
+            <ul className="mt-3 grid gap-2 text-sm leading-6 text-ink-soft">
+              {weddingPackage.features.map((feature) => (
+                <li key={feature} className="flex gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-champagne" />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brass">
+              Optional add-ons
+            </p>
+            <ul className="mt-3 grid gap-2 text-sm leading-6 text-ink-soft">
+              {weddingPackage.addOns.map((addOn) => (
+                <li key={addOn} className="flex gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-dusty-rose" />
+                  <span>{addOn}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="mt-auto pt-7">
+          <CTAButton href={`/availability?package=${weddingPackage.slug}`} variant="secondary" className="w-full px-4">
             Check Availability
           </CTAButton>
+          {helpAction ? <div className="mt-3">{helpAction}</div> : null}
         </div>
       </div>
     </article>

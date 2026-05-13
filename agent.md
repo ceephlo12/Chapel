@@ -13,7 +13,7 @@ The mockup should show:
 - New Orleans weekend events feature
 - white-glove chapel team help path
 - Teresa Newman Photography feature
-- Rev. Tony legacy section
+- chapel founder legacy section
 
 ## Design Direction
 
@@ -51,7 +51,7 @@ Avoid:
 
 ## Content Rules
 
-### Rev. Tony
+### Chapel Founder Legacy
 
 Keep Rev. Tony as part of the chapel's founding story and legacy.
 
@@ -63,17 +63,17 @@ Do:
 
 Do not:
 - erase him completely
-- present him as currently officiating
+- present him as a current ceremony leader
 - present him as currently running the chapel
 - present him as currently available
 
-### 24/7
+### Availability Language
 
-Remove all 24/7 wedding and 24/7 availability language.
+Remove all around-the-clock wedding or availability language.
 
 Do not say:
-- open 24/7
-- weddings anytime
+- always open
+- weddings at unrestricted hours
 - available day or night
 - book any time
 
@@ -82,20 +82,20 @@ Use:
 - "Select a preferred date and time, and the chapel team will follow up to confirm availability."
 - "Availability varies by date, package, and chapel schedule."
 
-### Photographers
+### Creative Partner
 
-Teresa Newman Photography is the only photographer reference allowed.
+Teresa Newman Photography is the only named photography reference allowed.
 
-Do not mention other photographers.
+Do not mention other photography vendors.
 
 ### Booking Language
 
 This mockup does not confirm real bookings.
 
 Do not say:
-- confirmed booking
-- guaranteed date
-- instant booking
+- finalized reservation
+- promised date
+- immediate reservation
 - payment complete
 
 Use:

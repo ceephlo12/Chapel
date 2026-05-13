@@ -1,3 +1,4 @@
+import { HelpInquiryModal } from "@/components/ChapelTeamHelp";
 import { BookingSummaryCard, SectionEyebrow } from "@/components/editorial";
 import { SaveTheDateForm } from "@/components/SaveTheDateForm";
 import { availabilityDays } from "@/lib/data/availability";
@@ -18,7 +19,7 @@ export default async function SaveTheDatePage({ searchParams }: SaveTheDatePageP
       <section className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr]">
         <aside className="lg:sticky lg:top-32 lg:self-start">
           <SectionEyebrow>Soft hold request</SectionEyebrow>
-          <h1 className="mt-4 font-serif text-6xl leading-none md:text-7xl">
+          <h1 className="mt-4 font-serif text-5xl leading-none sm:text-6xl md:text-7xl">
             Tell the chapel team what you are hoping for.
           </h1>
           <p className="mt-6 text-lg leading-8 text-ink-soft">
@@ -35,6 +36,11 @@ export default async function SaveTheDatePage({ searchParams }: SaveTheDatePageP
                 { label: "Chapel address", value: siteContent.address }
               ]}
               note={siteContent.scheduleNote}
+            />
+            <HelpInquiryModal
+              className="mt-4 w-full"
+              preferredPackage={selectedPackage?.slug ?? ""}
+              preferredDate={selectedDate?.date ?? ""}
             />
           </div>
         </aside>

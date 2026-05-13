@@ -1,3 +1,4 @@
+import { HelpInquiryModal } from "@/components/ChapelTeamHelp";
 import { BookingSummaryCard, CTAButton, GoldDivider, SectionEyebrow } from "@/components/editorial";
 import { siteContent } from "@/lib/data/siteContent";
 
@@ -24,7 +25,7 @@ export default async function ConfirmationPage({ searchParams }: ConfirmationPag
       <section className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_390px] lg:items-center">
         <div>
           <SectionEyebrow>Soft hold request received</SectionEyebrow>
-          <h1 className="mt-5 max-w-4xl font-serif text-6xl leading-none md:text-7xl">
+          <h1 className="mt-5 max-w-4xl font-serif text-5xl leading-none sm:text-6xl md:text-7xl">
             The chapel team would follow up from here.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-ink-soft">
@@ -41,6 +42,7 @@ export default async function ConfirmationPage({ searchParams }: ConfirmationPag
             </CTAButton>
             <CTAButton href="/">Return Home</CTAButton>
           </div>
+          <HelpInquiryModal className="mt-4" />
         </div>
 
         <BookingSummaryCard

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { HelpInquiryModal } from "@/components/ChapelTeamHelp";
 import {
   CTAButton,
   EditorialHero,
@@ -38,7 +39,7 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.85fr_1.15fr] md:items-center">
           <div>
             <SectionEyebrow>Intimate by design</SectionEyebrow>
-            <h2 className="mt-4 font-serif text-5xl leading-tight md:text-6xl">
+            <h2 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl md:text-6xl">
               A chapel experience with the warmth of New Orleans and the polish of an editorial
               wedding weekend.
             </h2>
@@ -79,7 +80,7 @@ export default function HomePage() {
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
               <SectionEyebrow>Ceremony packages</SectionEyebrow>
-              <h2 className="mt-4 font-serif text-5xl leading-tight md:text-6xl">
+              <h2 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl md:text-6xl">
                 Choose the feeling first.
               </h2>
             </div>
@@ -93,6 +94,12 @@ export default function HomePage() {
                 key={weddingPackage.slug}
                 weddingPackage={weddingPackage}
                 image={weddingPackage.image}
+                helpAction={
+                  <HelpInquiryModal
+                    className="w-full px-4"
+                    preferredPackage={weddingPackage.slug}
+                  />
+                }
               />
             ))}
           </div>
@@ -103,9 +110,9 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[0.95fr_1.05fr] md:items-center">
           <div>
             <SectionEyebrow>Availability request</SectionEyebrow>
-            <h2 className="mt-4 font-serif text-5xl leading-tight md:text-6xl">
-              A refined path to ask for the date.
-            </h2>
+              <h2 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl md:text-6xl">
+                A refined path to ask for the date.
+              </h2>
             <p className="mt-6 text-base leading-8 text-ink-soft">{siteContent.requestNote}</p>
             <CTAButton href="/availability" className="mt-8">
               Request a Date
@@ -113,7 +120,7 @@ export default function HomePage() {
           </div>
           <div className="paper-panel rounded-[6px] p-7">
             <SectionEyebrow>Featured mock date</SectionEyebrow>
-            <p className="mt-4 font-serif text-5xl">{featuredDate.label}</p>
+            <p className="mt-4 font-serif text-4xl sm:text-5xl">{featuredDate.label}</p>
             <p className="mt-4 text-sm leading-7 text-ink-soft">{featuredDate.note}</p>
             <div className="mt-6 flex flex-wrap gap-2">
               {featuredDate.times.map((time) => (
@@ -140,9 +147,13 @@ export default function HomePage() {
             </p>
             <div className="grid gap-3">
               {cityEvents.slice(0, 3).map((event) => (
-                <div key={event.name} className="border-l border-champagne pl-4">
-                  <p className="font-medium text-espresso">{event.name}</p>
-                  <p className="text-sm leading-6">{event.planningTip}</p>
+                <div key={event.title} className="border-l border-champagne pl-4">
+                  <p className="font-medium text-espresso">{event.title}</p>
+                  <p className="text-xs uppercase tracking-[0.14em] text-brass">
+                    {event.type}
+                    {event.location ? ` / ${event.location}` : ""}
+                  </p>
+                  <p className="mt-1 text-sm leading-6">{event.planningTip}</p>
                 </div>
               ))}
             </div>
@@ -179,7 +190,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-[1.1fr_0.9fr]">
             <div className="p-8 md:p-12">
               <SectionEyebrow light>Begin the request</SectionEyebrow>
-              <h2 className="mt-4 font-serif text-5xl leading-tight">
+              <h2 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl">
                 Tell the chapel team what you are hoping for.
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-8 text-cream/85">

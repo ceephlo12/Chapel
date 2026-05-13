@@ -1,5 +1,6 @@
 "use client";
 
+import { HelpInquiryModal } from "@/components/ChapelTeamHelp";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { CTAButton, SectionEyebrow } from "@/components/editorial";
@@ -156,9 +157,16 @@ export function SaveTheDateForm({ defaultDate, defaultPackage }: SaveTheDateForm
         <p className="text-sm leading-6 text-ink-soft">
           No payment is collected in this mockup. This does not confirm a booking.
         </p>
-        <CTAButton type="submit">
-          Send Soft Hold Request
-        </CTAButton>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <HelpInquiryModal
+            preferredPackage={packageSlug}
+            preferredDate={date}
+            className="w-full sm:w-auto"
+          />
+          <CTAButton type="submit">
+            Send Soft Hold Request
+          </CTAButton>
+        </div>
       </div>
     </form>
   );

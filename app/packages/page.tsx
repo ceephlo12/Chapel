@@ -1,3 +1,4 @@
+import { HelpInquiryModal } from "@/components/ChapelTeamHelp";
 import { CTAButton, GoldDivider, PackageCard, SectionEyebrow } from "@/components/editorial";
 import { packages } from "@/lib/data/packages";
 import { siteContent } from "@/lib/data/siteContent";
@@ -8,7 +9,7 @@ export default function PackagesPage() {
       <section className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1fr_0.7fr] md:items-end">
         <div className="max-w-3xl">
           <SectionEyebrow>Wedding package browsing</SectionEyebrow>
-          <h1 className="mt-4 font-serif text-6xl leading-none md:text-7xl">
+          <h1 className="mt-4 font-serif text-5xl leading-none sm:text-6xl md:text-7xl">
             Ceremony packages with a New Orleans sense of occasion.
           </h1>
           <p className="mt-6 text-lg leading-8 text-ink-soft">
@@ -32,6 +33,12 @@ export default function PackagesPage() {
             weddingPackage={weddingPackage}
             image={weddingPackage.image}
             featured={index === 1}
+            helpAction={
+              <HelpInquiryModal
+                className="w-full px-4"
+                preferredPackage={weddingPackage.slug}
+              />
+            }
           />
         ))}
       </section>
@@ -40,18 +47,18 @@ export default function PackagesPage() {
         <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-center">
           <div>
             <SectionEyebrow>White-glove path</SectionEyebrow>
-            <h2 className="mt-3 font-serif text-4xl">Need the chapel team to guide the choice?</h2>
+            <h2 className="mt-3 font-serif text-3xl leading-tight sm:text-4xl">
+              Need the chapel team to guide the choice?
+            </h2>
             <p className="mt-4 text-base leading-8 text-ink-soft">
-              Describe the celebration, guest flow, photography priorities, carriage ideas, or
-              second line hopes before the chapel confirms anything.
+              Describe the celebration, guest flow, Teresa Newman Photography interest, carriage
+              ideas, or second line hopes before the chapel confirms anything.
             </p>
             <GoldDivider className="mt-7 max-w-lg" />
           </div>
           <div className="flex flex-col gap-3 sm:flex-row md:justify-end">
             <CTAButton href="/availability">Request Your Date</CTAButton>
-            <CTAButton href="/save-the-date" variant="secondary">
-              Ask the Chapel Team
-            </CTAButton>
+            <HelpInquiryModal />
           </div>
         </div>
       </section>
