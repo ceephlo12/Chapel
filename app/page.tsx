@@ -1,142 +1,199 @@
 import Image from "next/image";
-import { ButtonLink } from "@/components/ButtonLink";
+import {
+  CTAButton,
+  EditorialHero,
+  FeatureSplit,
+  GoldDivider,
+  MagazineQuote,
+  PackageCard,
+  SectionEyebrow
+} from "@/components/editorial";
+import { availabilityDays } from "@/lib/data/availability";
+import { cityEvents } from "@/lib/data/cityEvents";
 import { packages } from "@/lib/data/packages";
 import { siteContent } from "@/lib/data/siteContent";
 
 export default function HomePage() {
   const featuredPackages = packages.slice(0, 3);
+  const featuredDate = availabilityDays.find((day) => day.status === "open") ?? availabilityDays[0];
 
   return (
     <main>
-      <section className="relative min-h-[calc(100vh-88px)] overflow-hidden">
-        <Image
-          src="/images/fqwc-hero-concept.png"
-          alt="Editorial concept image of a romantic French Quarter chapel courtyard"
-          fill
-          priority
-          className="object-cover"
-        />
-        <div className="image-vignette absolute inset-0" />
-        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-88px)] max-w-7xl items-end px-5 pb-14 pt-24 md:px-8 md:pb-20">
-          <div className="max-w-3xl text-ivory">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-champagne">
-              333 Burgundy Street, New Orleans
-            </p>
-            <h1 className="mt-5 font-serif text-6xl leading-[0.9] md:text-8xl">
-              French Quarter Wedding Chapel
-            </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-cream">
-              A refined concept for an intimate French Quarter wedding chapel, shaped for small
-              ceremonies, soft holds, second lines, carriage moments, and a more graceful planning
-              path.
-            </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/packages">Browse Packages</ButtonLink>
-              <ButtonLink href="/availability" variant="secondary" className="border-ivory/60 text-ivory hover:bg-ivory/10">
-                View Mock Availability
-              </ButtonLink>
+      <EditorialHero
+        eyebrow="French Quarter Wedding Chapel"
+        title={
+          <>
+            A French Quarter Wedding,
+            <br />
+            Beautifully Held.
+          </>
+        }
+        subtitle="Intimate ceremonies, elopements, carriage weddings, and second line celebrations in the heart of New Orleans."
+        image="/images/fqwc-hero-concept.png"
+        primaryCta={{ href: "/packages", label: "View the Ceremony Packages" }}
+        secondaryCta={{ href: "/availability", label: "Request a Date" }}
+      />
+
+      <section className="px-5 py-16 md:px-8 md:py-24">
+        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.85fr_1.15fr] md:items-center">
+          <div>
+            <SectionEyebrow>Intimate by design</SectionEyebrow>
+            <h2 className="mt-4 font-serif text-5xl leading-tight md:text-6xl">
+              A chapel experience with the warmth of New Orleans and the polish of an editorial
+              wedding weekend.
+            </h2>
+          </div>
+          <div className="paper-panel rounded-[6px] p-7 md:p-9">
+            <p className="text-lg leading-9 text-ink-soft">{siteContent.intro}</p>
+            <GoldDivider className="my-7" />
+            <div className="grid gap-5 text-sm leading-7 text-ink-soft sm:grid-cols-2">
+              <p>{siteContent.guestNote}</p>
+              <p>{siteContent.availabilityNote}</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="px-5 py-16 md:px-8 md:py-24">
-        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-end">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brass">
-              Intimate by design
+      <FeatureSplit
+        eyebrow="The setting"
+        title="Old New Orleans atmosphere, held close."
+        image="/images/courtyard-feature.png"
+        imageAlt="Editorial concept image of a French Quarter courtyard wedding setting"
+        body={
+          <>
+            <p>
+              Think antique iron balconies, warm plaster, candlelit chapel moments, and a ceremony
+              path that keeps the day personal rather than overproduced.
             </p>
-            <h2 className="mt-4 font-serif text-5xl leading-tight md:text-6xl">
-              A chapel experience that feels cared for, not commercial.
-            </h2>
-          </div>
-          <div className="space-y-5 text-base leading-8 text-ink-soft">
-            <p>{siteContent.intro}</p>
-            <p>{siteContent.guestNote}</p>
-            <p className="font-medium text-espresso">{siteContent.availabilityNote}</p>
-          </div>
-        </div>
-      </section>
+            <p>
+              This concept positions the chapel as a refined destination for couples who want a
+              small wedding with a strong sense of place.
+            </p>
+          </>
+        }
+        cta={{ href: "/availability", label: "Request Your Date" }}
+      />
 
       <section className="bg-cream/70 px-5 py-16 md:px-8 md:py-24">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brass">
-                Wedding packages
-              </p>
-              <h2 className="mt-4 font-serif text-5xl">Choose the feeling first.</h2>
+            <div className="max-w-2xl">
+              <SectionEyebrow>Ceremony packages</SectionEyebrow>
+              <h2 className="mt-4 font-serif text-5xl leading-tight md:text-6xl">
+                Choose the feeling first.
+              </h2>
             </div>
-            <ButtonLink href="/packages" variant="secondary">
-              See All Packages
-            </ButtonLink>
+            <CTAButton href="/packages" variant="secondary">
+              View the Ceremony Packages
+            </CTAButton>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
             {featuredPackages.map((weddingPackage) => (
-              <article
+              <PackageCard
                 key={weddingPackage.slug}
-                className="border border-brass/20 bg-ivory p-7 shadow-[0_18px_60px_rgba(43,29,23,0.08)]"
-              >
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brass">
-                  {weddingPackage.eyebrow}
-                </p>
-                <h3 className="mt-4 font-serif text-3xl">{weddingPackage.name}</h3>
-                <p className="mt-4 min-h-24 text-sm leading-7 text-ink-soft">
-                  {weddingPackage.description}
-                </p>
-                <p className="mt-6 border-t border-brass/20 pt-5 text-sm font-medium text-espresso">
-                  {weddingPackage.guestRange}
-                </p>
-              </article>
+                weddingPackage={weddingPackage}
+                image={weddingPackage.image}
+              />
             ))}
           </div>
         </div>
       </section>
 
       <section className="px-5 py-16 md:px-8 md:py-24">
-        <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-3">
-          <div className="md:col-span-2">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brass">
-              White-glove help
-            </p>
-            <h2 className="mt-4 font-serif text-5xl leading-tight">
-              Not sure what fits? Ask the chapel team to shape the request.
-            </h2>
-          </div>
-          <div className="border-l border-brass/30 pl-6 text-sm leading-7 text-ink-soft">
-            <p>
-              Couples can request help with ceremony timing, guest flow, city-event awareness,
-              package fit, and photo-friendly pacing before a final booking is confirmed.
-            </p>
-            <ButtonLink href="/save-the-date" className="mt-6 w-full">
-              Start a Soft Hold Request
-            </ButtonLink>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-espresso px-5 py-16 text-ivory md:px-8 md:py-20">
-        <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1fr_1fr]">
+        <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[0.95fr_1.05fr] md:items-center">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-champagne">
-              Photography note
-            </p>
-            <h2 className="mt-4 font-serif text-5xl">Teresa Newman Photography</h2>
+            <SectionEyebrow>Availability request</SectionEyebrow>
+            <h2 className="mt-4 font-serif text-5xl leading-tight md:text-6xl">
+              A refined path to ask for the date.
+            </h2>
+            <p className="mt-6 text-base leading-8 text-ink-soft">{siteContent.requestNote}</p>
+            <CTAButton href="/availability" className="mt-8">
+              Request a Date
+            </CTAButton>
           </div>
-          <p className="text-base leading-8 text-cream/80">
-            {siteContent.photographer} In the finished site, this section can become a tasteful
-            gallery or preferred photography note using chapel-approved imagery.
-          </p>
+          <div className="paper-panel rounded-[6px] p-7">
+            <SectionEyebrow>Featured mock date</SectionEyebrow>
+            <p className="mt-4 font-serif text-5xl">{featuredDate.label}</p>
+            <p className="mt-4 text-sm leading-7 text-ink-soft">{featuredDate.note}</p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {featuredDate.times.map((time) => (
+                <span key={time} className="border border-brass/30 bg-cream/45 px-3 py-2 text-sm">
+                  {time}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="px-5 py-16 md:px-8 md:py-20">
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brass">
-            Chapel legacy
-          </p>
-          <h2 className="mt-4 font-serif text-4xl">Remembering Rev. Tony</h2>
-          <p className="mt-5 text-base leading-8 text-ink-soft">{siteContent.legacy}</p>
+      <FeatureSplit
+        eyebrow="Make a Weekend of It"
+        title="Your ceremony is only the beginning."
+        image="/images/second-line-feature.png"
+        imageAlt="Editorial concept image of a New Orleans second line wedding detail"
+        reverse
+        body={
+          <>
+            <p>
+              See what your guests can experience while they are in New Orleans, from French
+              Quarter music blocks to gallery weekends and riverfront holiday activity.
+            </p>
+            <div className="grid gap-3">
+              {cityEvents.slice(0, 3).map((event) => (
+                <div key={event.name} className="border-l border-champagne pl-4">
+                  <p className="font-medium text-espresso">{event.name}</p>
+                  <p className="text-sm leading-6">{event.planningTip}</p>
+                </div>
+              ))}
+            </div>
+          </>
+        }
+        cta={{ href: "/availability", label: "Plan the Weekend" }}
+      />
+
+      <FeatureSplit
+        eyebrow="Teresa Newman Photography"
+        title="Photography with a Sense of Place"
+        image="/images/photography-feature.png"
+        imageAlt="Editorial concept image of wedding photography details"
+        dark
+        body={<p>{siteContent.photographer}</p>}
+        cta={{ href: "/save-the-date", label: "Ask About Photography" }}
+      />
+
+      <FeatureSplit
+        eyebrow="Chapel legacy"
+        title="Honoring Rev. Tony's Legacy"
+        image="/images/legacy-feature.png"
+        imageAlt="Warm editorial still life suggesting chapel legacy"
+        reverse
+        body={<p>{siteContent.legacy}</p>}
+      />
+
+      <MagazineQuote>
+        Ceremony times are available by request and confirmed by the chapel team.
+      </MagazineQuote>
+
+      <section className="px-5 pb-16 md:px-8 md:pb-24">
+        <div className="mx-auto max-w-7xl overflow-hidden rounded-[6px] bg-espresso text-ivory">
+          <div className="grid md:grid-cols-[1.1fr_0.9fr]">
+            <div className="p-8 md:p-12">
+              <SectionEyebrow light>Begin the request</SectionEyebrow>
+              <h2 className="mt-4 font-serif text-5xl leading-tight">
+                Tell the chapel team what you are hoping for.
+              </h2>
+              <p className="mt-5 max-w-2xl text-base leading-8 text-cream/85">
+                Share a date, ceremony style, and guest count. The chapel team follows up to review
+                availability, timing, and the right package fit.
+              </p>
+              <CTAButton href="/save-the-date" variant="light" className="mt-8">
+                Ask the Chapel Team
+              </CTAButton>
+            </div>
+            <div className="relative min-h-72">
+              <Image src="/images/carriage-feature.png" alt="" fill className="object-cover" />
+            </div>
+          </div>
         </div>
       </section>
     </main>

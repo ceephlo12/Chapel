@@ -1,26 +1,30 @@
 @import "tailwindcss";
 
 :root {
-  --ivory: #fbf7ee;
-  --cream: #f3eadb;
-  --champagne: #d8bd83;
-  --brass: #a9743a;
-  --espresso: #2b1d17;
-  --moss: #5b6545;
-  --rouge: #7f3737;
-  --ink-soft: #69584f;
+  --ivory: #f8f3ea;
+  --cream: #efe3d0;
+  --parchment: #e7d6bd;
+  --champagne: #b9975b;
+  --brass: #8a6a3d;
+  --espresso: #241c17;
+  --soft-black: #111111;
+  --dusty-rose: #b98a86;
+  --sage: #7f8a6b;
+  --ink-soft: #66584e;
 }
 
 @theme {
   --color-ivory: var(--ivory);
   --color-cream: var(--cream);
+  --color-parchment: var(--parchment);
   --color-champagne: var(--champagne);
   --color-brass: var(--brass);
   --color-espresso: var(--espresso);
-  --color-moss: var(--moss);
-  --color-rouge: var(--rouge);
+  --color-soft-black: var(--soft-black);
+  --color-dusty-rose: var(--dusty-rose);
+  --color-sage: var(--sage);
   --color-ink-soft: var(--ink-soft);
-  --font-serif: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-serif: "Playfair Display", "Cormorant Garamond", "Libre Baskerville", "Iowan Old Style", Georgia, serif;
   --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
 
@@ -35,8 +39,9 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at 20% 0%, rgba(216, 189, 131, 0.16), transparent 30rem),
-    linear-gradient(180deg, #fbf7ee 0%, #f3eadb 58%, #fbf7ee 100%);
+    linear-gradient(120deg, rgba(138, 106, 61, 0.06) 0 1px, transparent 1px 34px),
+    radial-gradient(circle at 18% 0%, rgba(185, 151, 91, 0.18), transparent 30rem),
+    linear-gradient(180deg, var(--ivory) 0%, var(--cream) 58%, var(--ivory) 100%);
   color: var(--espresso);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
@@ -51,7 +56,7 @@ body::before {
     linear-gradient(90deg, rgba(43, 29, 23, 0.025) 1px, transparent 1px);
   background-size: 38px 38px;
   mix-blend-mode: multiply;
-  opacity: 0.28;
+  opacity: 0.2;
   z-index: -1;
 }
 
@@ -68,7 +73,7 @@ textarea {
 }
 
 .editorial-rule {
-  background: linear-gradient(90deg, transparent, rgba(169, 116, 58, 0.72), transparent);
+  background: linear-gradient(90deg, transparent, rgba(185, 151, 91, 0.82), transparent);
   height: 1px;
 }
 
@@ -76,5 +81,27 @@ textarea {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(43, 29, 23, 0.46), rgba(43, 29, 23, 0.08) 48%, rgba(43, 29, 23, 0.22));
+  background:
+    linear-gradient(90deg, rgba(17, 17, 17, 0.68), rgba(36, 28, 23, 0.22) 54%, rgba(17, 17, 17, 0.34)),
+    linear-gradient(0deg, rgba(17, 17, 17, 0.5), transparent 38%);
+}
+
+.paper-panel {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.32), transparent 42%),
+    var(--ivory);
+  border: 1px solid rgba(138, 106, 61, 0.22);
+  box-shadow: 0 18px 55px rgba(36, 28, 23, 0.08);
+}
+
+.ornamental-frame {
+  position: relative;
+}
+
+.ornamental-frame::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  pointer-events: none;
+  border: 1px solid rgba(185, 151, 91, 0.45);
 }

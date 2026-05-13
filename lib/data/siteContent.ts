@@ -3,7 +3,7 @@ export const siteContent = {
   address: "333 Burgundy Street, New Orleans",
   disclaimer: "Unofficial concept redesign for presentation purposes only.",
   intro:
-    "An intimate French Quarter wedding chapel for small ceremonies, elopements, second lines, carriage moments, and deeply personal New Orleans celebrations.",
+    "An intimate French Quarter wedding chapel for small ceremonies, elopements, carriage weddings, second line celebrations, and deeply personal New Orleans vows.",
   availabilityNote:
     "Ceremony times are available by request and confirmed by the chapel team.",
   requestNote:
@@ -11,7 +11,7 @@ export const siteContent = {
   scheduleNote: "Availability varies by date, package, and chapel schedule.",
   guestNote: "Designed for intimate gatherings, with chapel celebrations around 50 guests.",
   photographer:
-    "Photography references in this concept are limited to Teresa Newman Photography.",
+    "For couples who want their wedding day remembered with warmth, atmosphere, and an artist's eye, photography can be added to select ceremony experiences through Teresa Newman Photography.",
   legacy:
-    "Rev. Tony is honored here as part of the chapel's founding story and legacy. This concept keeps that history with respect while making clear that ceremony requests are handled by the current chapel team."
+    "French Quarter Wedding Chapel carries forward the spirit of Rev. Tony, one of the chapel's founding figures. His warmth, humor, and love for New Orleans helped shape the chapel's story. Though he has passed, his presence remains part of the heart and history of this place."
 };

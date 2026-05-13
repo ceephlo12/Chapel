@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import { CTAButton, SectionEyebrow } from "@/components/editorial";
 import { availabilityDays } from "@/lib/data/availability";
 import { packages } from "@/lib/data/packages";
 
@@ -33,7 +34,8 @@ export function SaveTheDateForm({ defaultDate, defaultPackage }: SaveTheDateForm
   }
 
   return (
-    <form onSubmit={submitRequest} className="border border-brass/20 bg-ivory p-6 shadow-[0_20px_70px_rgba(43,29,23,0.08)] md:p-9">
+    <form onSubmit={submitRequest} className="paper-panel rounded-[6px] p-6 md:p-9">
+      <SectionEyebrow>Request details</SectionEyebrow>
       <div className="grid gap-5 md:grid-cols-2">
         <label className="grid gap-2 text-sm font-medium text-espresso">
           Couple name
@@ -154,12 +156,9 @@ export function SaveTheDateForm({ defaultDate, defaultPackage }: SaveTheDateForm
         <p className="text-sm leading-6 text-ink-soft">
           No payment is collected in this mockup. This does not confirm a booking.
         </p>
-        <button
-          type="submit"
-          className="inline-flex min-h-12 items-center justify-center rounded-sm bg-espresso px-6 text-sm font-semibold uppercase tracking-[0.14em] text-ivory transition hover:bg-[#3a2921]"
-        >
+        <CTAButton type="submit">
           Send Soft Hold Request
-        </button>
+        </CTAButton>
       </div>
     </form>
   );

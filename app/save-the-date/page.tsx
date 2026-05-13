@@ -1,3 +1,4 @@
+import { BookingSummaryCard, SectionEyebrow } from "@/components/editorial";
 import { SaveTheDateForm } from "@/components/SaveTheDateForm";
 import { availabilityDays } from "@/lib/data/availability";
 import { packages } from "@/lib/data/packages";
@@ -16,9 +17,7 @@ export default async function SaveTheDatePage({ searchParams }: SaveTheDatePageP
     <main className="px-5 py-14 md:px-8 md:py-20">
       <section className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr]">
         <aside className="lg:sticky lg:top-32 lg:self-start">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brass">
-            Soft hold request
-          </p>
+          <SectionEyebrow>Soft hold request</SectionEyebrow>
           <h1 className="mt-4 font-serif text-6xl leading-none md:text-7xl">
             Tell the chapel team what you are hoping for.
           </h1>
@@ -27,24 +26,16 @@ export default async function SaveTheDatePage({ searchParams }: SaveTheDatePageP
             ceremony timing, package details, and booking steps.
           </p>
 
-          <div className="mt-8 border border-brass/20 bg-cream/70 p-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brass">
-              Request summary
-            </p>
-            <dl className="mt-4 space-y-4 text-sm leading-6">
-              <div>
-                <dt className="font-semibold text-espresso">Preferred date</dt>
-                <dd className="text-ink-soft">{selectedDate?.label ?? "Not selected yet"}</dd>
-              </div>
-              <div>
-                <dt className="font-semibold text-espresso">Package</dt>
-                <dd className="text-ink-soft">{selectedPackage?.name ?? "Help me choose"}</dd>
-              </div>
-              <div>
-                <dt className="font-semibold text-espresso">Availability note</dt>
-                <dd className="text-ink-soft">{siteContent.scheduleNote}</dd>
-              </div>
-            </dl>
+          <div className="mt-8">
+            <BookingSummaryCard
+              title="Request summary"
+              rows={[
+                { label: "Preferred date", value: selectedDate?.label ?? "Not selected yet" },
+                { label: "Package", value: selectedPackage?.name ?? "Help me choose" },
+                { label: "Chapel address", value: siteContent.address }
+              ]}
+              note={siteContent.scheduleNote}
+            />
           </div>
         </aside>
 

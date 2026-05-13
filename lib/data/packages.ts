@@ -8,6 +8,7 @@ export type WeddingPackage = {
   startingFrom: string;
   features: string[];
   tone: string;
+  image: string;
 };
 
 export const packages: WeddingPackage[] = [
@@ -21,7 +22,8 @@ export const packages: WeddingPackage[] = [
     idealFor: "Simple ceremonies, weekday requests, and private vow exchanges",
     startingFrom: "Concept pricing shown on request",
     features: ["Chapel ceremony setting", "Ceremony coordination", "Keepsake-friendly timing"],
-    tone: "Quiet, personal, unfussy"
+    tone: "Quiet, personal, unfussy",
+    image: "/images/courtyard-feature.png"
   },
   {
     slug: "standard-chapel-ceremony",
@@ -33,7 +35,8 @@ export const packages: WeddingPackage[] = [
     idealFor: "Family ceremonies, guest-forward vows, and a classic New Orleans chapel setting",
     startingFrom: "Concept pricing shown on request",
     features: ["Intimate chapel ceremony", "Guest arrival window", "Chapel team planning help"],
-    tone: "Elegant, warm, traditional"
+    tone: "Elegant, warm, traditional",
+    image: "/images/fqwc-hero-concept.png"
   },
   {
     slug: "elopement-package",
@@ -45,7 +48,8 @@ export const packages: WeddingPackage[] = [
     idealFor: "Destination couples, vow renewals, and low-pressure celebrations",
     startingFrom: "Concept pricing shown on request",
     features: ["Soft planning guidance", "Ceremony essentials", "Optional photo-friendly pacing"],
-    tone: "Romantic, intimate, editorial"
+    tone: "Romantic, intimate, editorial",
+    image: "/images/photography-feature.png"
   },
   {
     slug: "carriage-wedding",
@@ -57,7 +61,8 @@ export const packages: WeddingPackage[] = [
     idealFor: "Couples who want atmosphere, movement, and a memorable New Orleans entrance",
     startingFrom: "Concept pricing shown on request",
     features: ["Chapel ceremony request", "Carriage-inspired timeline", "Photo moment planning"],
-    tone: "Cinematic, gracious, old New Orleans"
+    tone: "Cinematic, gracious, old New Orleans",
+    image: "/images/carriage-feature.png"
   },
   {
     slug: "second-line-wedding",
@@ -69,6 +74,7 @@ export const packages: WeddingPackage[] = [
     idealFor: "Couples who want music, movement, and a true city celebration",
     startingFrom: "Concept pricing shown on request",
     features: ["Chapel ceremony request", "Second line planning path", "Guest flow guidance"],
-    tone: "Festive, soulful, unmistakably New Orleans"
+    tone: "Festive, soulful, unmistakably New Orleans",
+    image: "/images/second-line-feature.png"
   }
 ];
